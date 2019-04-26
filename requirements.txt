@@ -1,0 +1,4 @@
+joblib==0.13.2
+Pillow==6.0.0
+pytesseract==0.2.6
+tqdm==4.31.1
