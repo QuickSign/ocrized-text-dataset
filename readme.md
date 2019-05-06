@@ -121,6 +121,19 @@ mkdir -p datasets && docker run -it --rm -v `pwd`/datasets:/work/datasets/ qs/oc
 This will create a `datasets/` folder in the current directory and mount it in the container.
 Running the `tobacco3842.sh` or `rvl-cdip.sh` scripts will download and process the datasets as needed.
 
+For example:
+```bash
+./tobacco3842.sh
+# Downloading files from UMIACS server...
+# Decompressing .zip archives...
+# 
+# 2 archives were successfully processed.
+# Generating filelist
+# Do you want to run the OCR script now? [y/N] N
+```
+
+You can manually run the `to_text.py` script using Python if you want. See `python to_text.py -h` for usage information.
+
 ### Manual installation
 
 A manual installation needs a few requirements:
@@ -143,3 +156,17 @@ Python dependencies can be installed using pip (`pip install -r requirements.txt
 poetry install
 poetry shell
 ```
+
+Running the `tobacco3842.sh` or `rvl-cdip.sh` scripts will download and process the datasets as needed.
+
+```bash
+./tobacco3842.sh
+# Downloading files from UMIACS server...
+# Decompressing .zip archives...
+# 
+# 2 archives were successfully processed.
+# Generating filelist
+# Do you want to run the OCR script now? [y/N] N
+```
+
+You can manually run the `to_text.py` script using Python if you want. See `python to_text.py -h` for usage information.
