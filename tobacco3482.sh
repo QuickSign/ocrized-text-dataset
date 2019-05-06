@@ -5,7 +5,7 @@ echo "Downloading files from UMIACS server..."
 wget -nv --show-progress -c http://lampsrv02.umiacs.umd.edu/projdb/edit/userfiles/datasets/Tobacco3482_1.zip
 wget -nv --show-progress -c http://lampsrv02.umiacs.umd.edu/projdb/edit/userfiles/datasets/Tobacco3482_2.zip
 echo "Decompressing .zip archives..."
-unzip -n 'Tobacco3482_*.zip'
+unzip -q -n 'Tobacco3482_*.zip'
 echo "Generating filelist"
 find . -name '*.tif' > images.txt
 read -p "Do you want to run the OCR script now? [y/N] " -n 1 -r
