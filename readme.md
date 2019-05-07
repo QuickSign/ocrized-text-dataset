@@ -27,7 +27,7 @@ This README tries to follow the Datasheets for Datasets guidelines [^3]. See the
 
 ## Download
 
-Both datasets are available in the "releases" section.
+Both datasets are available in the ["releases" section](https://github.com/Quicksign/ocrized-text-dataset/releases).
 
 ## Motivation
 
