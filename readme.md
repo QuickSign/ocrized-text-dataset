@@ -122,6 +122,8 @@ mkdir -p datasets && docker run --user $(id -u):$(id -g) -it --rm -v `pwd`/datas
 # -v mounts a volume that will be seen inside the container
 ```
 
+_Note_: if you use [Task](https://taskfile.dev), you can simply execute `task run`.
+
 This will create a `datasets/` folder in the current directory and mount it in the container.
 Running the `tobacco3842.sh` or `rvl-cdip.sh` scripts will download and process the datasets as needed.
 

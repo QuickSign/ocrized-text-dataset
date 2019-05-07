@@ -1,0 +1,24 @@
+version: '2'
+
+tasks:
+  build:
+    desc: Build the Docker container
+    cmds:
+      - docker build . -t qs/ocrized
+  run:
+    desc: Run the Docker container
+    deps: [build]
+    cmds:
+      - mkdir -p datasets && docker run --user $(id -u):$(id -g) -it --rm -v `pwd`/datasets:/work/datasets/ qs/ocrized
+  make_pdf:
+    desc: Generate the README and Datasheet PDF files
+    cmds:
+      - pandoc readme.md --variable urlcolor=blue -t latex -o readme.pdf 
+      - pandoc datasheet.md --variable urlcolor=blue -t latex -o datasheet.pdf 
+  setup:
+    desc: Setup the requirements for the manual install
+    cmds:
+      - pip install poetry
+      - poetry install
+      - sudo ./setup.sh
+      - poetry shell
