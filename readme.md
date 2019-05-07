@@ -2,11 +2,22 @@
 
 ![Quicksign Logo](https://www.quicksign.com/wp-content/uploads/2018/07/Logo-QuickSign-935x193-.png)
 
+- [Quicksign OCRized Text Dataset (QS-OCR)](#quicksign-ocrized-text-dataset-qs-ocr)
+  - [Download](#download)
+  - [Motivation](#motivation)
+  - [Details](#details)
+    - [QS-OCR-Large](#qs-ocr-large)
+    - [QS-OCR-Small](#qs-ocr-small)
+  - [Methodology](#methodology)
+  - [How to reproduce](#how-to-reproduce)
+    - [Using Docker](#using-docker)
+    - [Manual installation](#manual-installation)
+
 The Quicksign OCRized Text Dataset is a collection of more than 400,000 labeled text files that have been extracted from real documents using optical character recognition (OCR). Each file is associated to a class of interest such as email, advertisement or scientific publication.
 
 It is based on the [RVL-CDIP (Ryerson Vision Lab Complex Document Information Processing) dataset](http://www.cs.cmu.edu/~aharley/rvl-cdip/) [^1] and the [Tobacco3482 dataset](https://lampsrv02.umiacs.umd.edu/projdb/project.php?id=72) [^2]. Both datasets are subsets of the large [Truth Tobacco Industry Documents](https://www.industrydocuments.ucsf.edu/tobacco/) archive.
 
-This README tries to follow the Datasheets for Datasets guidelines [^3].
+This README tries to follow the Datasheets for Datasets guidelines [^3]. See the [datasheet](datasheet.pdf) for more information.
 
 *First release*: May 2019.
 
@@ -115,8 +126,10 @@ After cloning the repository, run:
 
 ```bash
 docker build . -t qs/ocrized
-mkdir -p datasets && docker run --user $(id -u):$(id -g) -it --rm -v `pwd`/datasets:/work/datasets/ qs/ocrized
-# --user $(id -u):$(id -g) sets the user in the container as the user that runs the command (useful with the shared directory)
+mkdir -p datasets && docker run --user $(id -u):$(id -g) -it --rm \
+                       -v `pwd`/datasets:/work/datasets/ qs/ocrized
+# --user $(id -u):$(id -g) sets the user in the container as the user
+#            that runs the command (useful with the shared directory)
 # -it activates interactive mode
 # --rm deletes the container after usage
 # -v mounts a volume that will be seen inside the container
@@ -148,6 +161,8 @@ A manual installation needs a few requirements:
 * a Python 3 interpreter,
 * Python dependencies: joblib, tqdm, pytesseract, Pillow,
 * *optionally:* the languages files for tesseract (e.g. `tesseract-ocr-fra`, `tesseract-ocr-ger` on Ubuntu).
+
+_Note_: if you use [Task](https://taskfile.dev), you can simply execute `task setup`.
 
 Installation of Tesseract and other softwares is OS-dependent. On Ubuntu/Debian you can run the `setup.sh` script using root privileges or:
 
