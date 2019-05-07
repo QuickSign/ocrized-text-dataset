@@ -115,7 +115,11 @@ After cloning the repository, run:
 
 ```bash
 docker build . -t qs/ocrized
-mkdir -p datasets && docker run -it --rm -v `pwd`/datasets:/work/datasets/ qs/ocrized
+mkdir -p datasets && docker run --user $(id -u):$(id -g) -it --rm -v `pwd`/datasets:/work/datasets/ qs/ocrized
+# --user $(id -u):$(id -g) sets the user in the container as the user that runs the command (useful with the shared directory)
+# -it activates interactive mode
+# --rm deletes the container after usage
+# -v mounts a volume that will be seen inside the container
 ```
 
 This will create a `datasets/` folder in the current directory and mount it in the container.
